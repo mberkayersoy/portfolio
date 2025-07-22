@@ -1,0 +1,57 @@
+// Dark mode variables
+@bodyBgColor-dark: #18181b;
+@contentBgColor-dark: #23232a;
+@textColor-dark: #f4f4f5;
+@accentColor-dark: #6366f1;
+@borderColor-dark: #27272a;
+@cardBg-dark: #23232a;
+@headerBg-dark: #18181b;
+@footerBg-dark: #18181b;
+@skillRateCircleColor-dark: #a5b4fc;
+
+// Light mode variables
+@bodyBgColor-light: #f4f4f5;
+@contentBgColor-light: #ffffff;
+@textColor-light: #23232a;
+@accentColor-light: #6366f1;
+@borderColor-light: #e5e7eb;
+@cardBg-light: #ffffff;
+@headerBg-light: #f4f4f5;
+@footerBg-light: #f4f4f5;
+@skillRateCircleColor-light: #6366f1;
+
+// Default (fallback, will be overridden by theme)
+@bodyBgColor: @bodyBgColor-dark;
+@contentBgColor: @contentBgColor-dark;
+@textColor: @textColor-dark;
+@accentColor: @accentColor-dark;
+@borderColor: @borderColor-dark;
+@cardBg: @cardBg-dark;
+@headerBg: @headerBg-dark;
+@footerBg: @footerBg-dark;
+@skillRateCircleColor: @skillRateCircleColor-dark;
+
+// Theme switching via CSS classes (to be used in App.vue or main layout)
+:root.theme-dark {
+    --body-bg: @bodyBgColor-dark;
+    --content-bg: @contentBgColor-dark;
+    --text-color: @textColor-dark;
+    --accent-color: @accentColor-dark;
+    --border-color: @borderColor-dark;
+    --card-bg: @cardBg-dark;
+    --header-bg: @headerBg-dark;
+    --footer-bg: @footerBg-dark;
+    --skillrate-circle: @skillRateCircleColor-dark;
+}
+
+:root.theme-light {
+    --body-bg: @bodyBgColor-light;
+    --content-bg: @contentBgColor-light;
+    --text-color: @textColor-light;
+    --accent-color: @accentColor-light;
+    --border-color: @borderColor-light;
+    --card-bg: @cardBg-light;
+    --header-bg: @headerBg-light;
+    --footer-bg: @footerBg-light;
+    --skillrate-circle: @skillRateCircleColor-light;
+}
