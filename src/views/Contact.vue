@@ -1,66 +1,86 @@
 <template>
-  <div class="contact-container">
-    <h1>Let's get in touch</h1>
-    <div class="contact-desc">I'm looking for a job!<br/>Feel free to contact me about any opportunity, or just to chat about coding, games, music or anything else.</div>
-    <ul>
+  <div class="contact">
+    <h1>Get in touch</h1>
+    <p class="intro">
+      I'm open to new opportunities — feel free to reach out about a role,
+      a project, or just to talk games, music or code.
+    </p>
+
+    <ul class="links">
       <li>
-        <i class="fa fa-envelope-o fa-lg fa-fw"></i>
-        <a href="mailto:mberkayersoy@gmail.com" target="_blank">mberkayersoy@gmail.com</a>
+        <span class="link-label"><i class="fa fa-envelope-o"></i> Email</span>
+        <a href="mailto:mberkayersoy@gmail.com">mberkayersoy@gmail.com</a>
       </li>
       <li>
-        <i class="fa fa-linkedin fa-lg fa-fw" style="vertical-align: -5%;"></i>
-        <a href="https://www.linkedin.com/in/berkay-ersoy-291869228/" target="_blank">linkedin.com/berkay-ersoy</a>
+        <span class="link-label"><i class="fa fa-linkedin"></i> LinkedIn</span>
+        <a href="https://www.linkedin.com/in/berkay-ersoy-291869228/" target="_blank" rel="noopener">
+          linkedin.com/in/berkay-ersoy
+        </a>
       </li>
       <li>
-        <i class="fa fa-github fa-lg fa-fw"></i>
-        <a href="https://github.com/mberkayersoy" target="_blank">github.com/mberkayersoy</a>
+        <span class="link-label"><i class="fa fa-github"></i> GitHub</span>
+        <a href="https://github.com/mberkayersoy" target="_blank" rel="noopener">
+          github.com/mberkayersoy
+        </a>
       </li>
       <li>
-        <i class="fa fa-gamepad fa-lg fa-fw"></i>
-        <a href="https://mberkayersoy.itch.io" target="_blank">mberkayersoy.itch.io</a>
+        <span class="link-label"><i class="fa fa-gamepad"></i> itch.io</span>
+        <a href="https://mberkayersoy.itch.io" target="_blank" rel="noopener">
+          mberkayersoy.itch.io
+        </a>
       </li>
     </ul>
   </div>
 </template>
 
 <style scoped>
-ul {
+.contact {
+  max-width: 520px;
+}
+
+h1 { margin-bottom: 16px; }
+
+.intro {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 48px;
+  line-height: 1.7;
+}
+
+.links {
   list-style: none;
-  padding-inline-start: 0px;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
-li {
-    line-height: 1.8em;
-    font-size: 1.2em;
-  }
+.links li {
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+  margin: 0;
 
-.contact-container {
-  width: 100%;
-  padding: 24px;
-  box-sizing: border-box;
-}
-@media (min-width: 900px) {
-  .contact-container {
-    padding: 48px 32px;
-  }
-}
-.contact-desc {
-  margin-bottom: 32px;
-  font-size: 1.1em;
+  &:first-child { border-top: 1px solid var(--border); }
 }
 
-@media only screen and (min-width: 620px){
-  ul {
-    padding-inline-start: 40px;
-  }
-
-  li {
-    line-height: 2em;
-    font-size: 1.4em;
-  }
+.link-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  min-width: 84px;
+  flex-shrink: 0;
 }
 
-i {
-  margin-right: 20px;
+.links a {
+  font-size: 0.9rem;
+  color: var(--text);
+  text-decoration: none;
+  transition: opacity 0.15s;
+  &:hover { opacity: 0.7; }
 }
 </style>

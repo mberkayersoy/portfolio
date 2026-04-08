@@ -1,57 +1,53 @@
-// Dark mode variables
-@bodyBgColor-dark: #18181b;
-@contentBgColor-dark: #23232a;
-@textColor-dark: #f4f4f5;
-@accentColor-dark: #6366f1;
-@borderColor-dark: #27272a;
-@cardBg-dark: #23232a;
-@headerBg-dark: #18181b;
-@footerBg-dark: #18181b;
-@skillRateCircleColor-dark: #a5b4fc;
+// ─── Dark palette ────────────────────────────────────────────────
+@bg-dark:             #0f0f0f;
+@surface-dark:        #191919;
+@text-dark:           #e0e0e0;
+@text-muted-dark:     #555555;
+@border-dark:         #272727;
+@accent-dark:         #e0e0e0;   // same as text — monochromatic
+@skillborder-dark:    #363636;
 
-// Light mode variables
-@bodyBgColor-light: #f4f4f5;
-@contentBgColor-light: #ffffff;
-@textColor-light: #23232a;
-@accentColor-light: #6366f1;
-@borderColor-light: #e5e7eb;
-@cardBg-light: #ffffff;
-@headerBg-light: #f4f4f5;
-@footerBg-light: #f4f4f5;
-@skillRateCircleColor-light: #6366f1;
+// ─── Light palette ───────────────────────────────────────────────
+@bg-light:            #f5f5f5;
+@surface-light:       #ffffff;
+@text-light:          #111111;
+@text-muted-light:    #888888;
+@border-light:        #e0e0e0;
+@accent-light:        #111111;
+@skillborder-light:   #d0d0d0;
 
-// Default (fallback, will be overridden by theme)
-@bodyBgColor: @bodyBgColor-dark;
-@contentBgColor: @contentBgColor-dark;
-@textColor: @textColor-dark;
-@accentColor: @accentColor-dark;
-@borderColor: @borderColor-dark;
-@cardBg: @cardBg-dark;
-@headerBg: @headerBg-dark;
-@footerBg: @footerBg-dark;
-@skillRateCircleColor: @skillRateCircleColor-dark;
+// ─── CSS custom properties ───────────────────────────────────────
+:root {
+    // defaults → dark
+    --bg:            @bg-dark;
+    --surface:       @surface-dark;
+    --text:          @text-dark;
+    --text-muted:    @text-muted-dark;
+    --border:        @border-dark;
+    --accent:        @accent-dark;
+    --skillborder:   @skillborder-dark;
+}
 
-// Theme switching via CSS classes (to be used in App.vue or main layout)
 :root.theme-dark {
-    --body-bg: @bodyBgColor-dark;
-    --content-bg: @contentBgColor-dark;
-    --text-color: @textColor-dark;
-    --accent-color: @accentColor-dark;
-    --border-color: @borderColor-dark;
-    --card-bg: @cardBg-dark;
-    --header-bg: @headerBg-dark;
-    --footer-bg: @footerBg-dark;
-    --skillrate-circle: @skillRateCircleColor-dark;
+    --bg:            @bg-dark;
+    --surface:       @surface-dark;
+    --text:          @text-dark;
+    --text-muted:    @text-muted-dark;
+    --border:        @border-dark;
+    --accent:        @accent-dark;
+    --skillborder:   @skillborder-dark;
 }
 
 :root.theme-light {
-    --body-bg: @bodyBgColor-light;
-    --content-bg: @contentBgColor-light;
-    --text-color: @textColor-light;
-    --accent-color: @accentColor-light;
-    --border-color: @borderColor-light;
-    --card-bg: @cardBg-light;
-    --header-bg: @headerBg-light;
-    --footer-bg: @footerBg-light;
-    --skillrate-circle: @skillRateCircleColor-light;
+    --bg:            @bg-light;
+    --surface:       @surface-light;
+    --text:          @text-light;
+    --text-muted:    @text-muted-light;
+    --border:        @border-light;
+    --accent:        @accent-light;
+    --skillborder:   @skillborder-light;
 }
+
+// ─── Legacy aliases (used by Footer, SkillRate) ───────────────────
+@bodyBgColor:         var(--bg);
+@skillRateCircleColor: var(--skillborder);

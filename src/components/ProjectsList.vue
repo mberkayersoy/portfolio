@@ -1,146 +1,159 @@
 <template>
-    <div>
-      <div class="projects-list">
-        <template v-for="project in projects">
-          <div
-            :key="project.id"
-              @click="showDetails(project)"
-              class="project-item"
-              :class="{ 'wide': project.isWide, 'high': project.isHigh }">
-            <div class="project-item-image" :style="{ 'background-image': 'url(' + project.iconUrl + ')' }">
-            </div>
-            <div class="title-bar" :style="{ 'background-color': project.accentColor + 'DD' }">
-                <div class="title-text">
-                  {{ project.name }}
-                </div>
-              </div>
-          </div>
-        </template>
+  <div>
+    <div class="projects-grid">
+      <div
+        v-for="project in projects"
+        :key="project.id"
+        class="project-card"
+        :class="{ wide: project.isWide, high: project.isHigh }"
+        @click="showDetails(project)"
+      >
+        <div
+          class="card-image"
+          :style="{ backgroundImage: 'url(' + project.iconUrl + ')' }"
+        />
+        <div class="card-label">
+          <span class="card-name">{{ project.name }}</span>
+          <span class="card-arrow">→</span>
+        </div>
       </div>
-
-      <ProjectDetailsOverlay
-        v-on:close="showPopup = false"
-        :visible="showPopup"
-        :title="popupTitle"
-        :htmlContent="popupContent"
-        :color="popupColor"
-      />
     </div>
+
+    <ProjectDetailsOverlay
+      :visible="showPopup"
+      :title="popupTitle"
+      :htmlContent="popupContent"
+      :color="popupColor"
+      @close="showPopup = false"
+    />
+  </div>
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import ProjectDetailsOverlay from "@/components/ProjectDetailsOverlay.vue";
-import ProjectData from "@/data/ProjectData.ts";
+import Vue from 'vue';
+import ProjectDetailsOverlay from '@/components/ProjectDetailsOverlay.vue';
+import ProjectData from '@/data/ProjectData.ts';
 
 export default Vue.extend({
-  name: "ProjectsList",
-  components: {
-    ProjectDetailsOverlay,
-  },
+  name: 'ProjectsList',
+  components: { ProjectDetailsOverlay },
   props: {
     projects: Array,
-    openProjectId: {
-      type: String,
-      default: null
-    }
+    openProjectId: { type: String, default: null },
   },
-  data: function () {
+  data() {
     return {
       showPopup: false,
-      popupTitle: "",
-      popupColor: "",
-      popupContent: ""
+      popupTitle: '',
+      popupColor: '',
+      popupContent: '',
     };
   },
   watch: {
     openProjectId: {
       immediate: true,
-      handler(newVal) {
-        if (newVal && this.projects) {
-          const project = this.projects.find((p: any) => p.id === newVal || p.name === newVal);
-          if (project) {
-            this.showDetails(project as ProjectData);
-          }
+      handler(val) {
+        if (val && this.projects) {
+          const p = this.projects.find((p: any) => p.id === val || p.name === val);
+          if (p) this.showDetails(p as ProjectData);
         }
-      }
-    }
+      },
+    },
   },
   methods: {
-    showDetails: function (item: ProjectData) {
+    showDetails(item: ProjectData) {
       this.popupTitle = item.name;
       this.popupColor = item.accentColor;
       this.popupContent = item.htmlDescription;
       this.showPopup = true;
-      window.scrollTo(0,0);
+      window.scrollTo(0, 0);
     },
   },
 });
 </script>
 
 <style scoped>
-
-.project-item {
-  height: 300px;
-  margin-bottom: 20px;
-  width: 100%;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
+/* ── Grid ─────────────────────────────────────── */
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
 }
 
-.project-item-image {
-  background-size: cover;
-  background-position: center;
-  height: 100%;
-  width: 100%;
-  transition: all 0.2s;
-}
-.project-item-image:hover {
-  -webkit-transform: scale(1.1);
-  -ms-transform: scale(1.1);
-  transform: scale(1.1);
-}
-
-.project-item:hover {
-filter: brightness(120%);
-}
-
-.title-bar {
-  position: absolute;
-  bottom: 0px;
-  width: 100%;
-  background-color: #222222;
-}
-
-.title-text {
-  padding: 10px;
-}
-
-@media only screen and (min-width: 620px){
-  .projects-list {
-    max-width: 900px;
-    display: grid;
+@media (min-width: 560px) {
+  .projects-grid {
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 20px;
-    grid-auto-rows: minmax(250px, auto);
+    grid-auto-rows: 220px;
   }
-
-  .project-item {
-    margin: 0px;
-    height: 100%;
-    width: 100%;
-  }
-
   .wide {
-    grid-column-end: span 3;
-    grid-row-end: span 2;
+    grid-column: span 3;
+    grid-row: span 2;
   }
   .high {
-    grid-row-end: span 2;
+    grid-row: span 2;
   }
 }
 
+/* ── Card ─────────────────────────────────────── */
+.project-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 6px;
+  background: var(--surface);
+  min-height: 200px;
+}
 
+.card-image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.35s ease;
+}
 
+.project-card:hover .card-image {
+  transform: scale(1.04);
+}
+
+/* Gradient overlay */
+.project-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+/* Label */
+.card-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+
+.card-arrow {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.5);
+  transition: color 0.2s, transform 0.2s;
+}
+
+.project-card:hover .card-arrow {
+  color: #fff;
+  transform: translateX(3px);
+}
 </style>

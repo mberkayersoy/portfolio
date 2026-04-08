@@ -1,23 +1,19 @@
 <template>
   <div id="app">
-    
-    <link rel="stylesheet" href="@/assets/projects/projects.css" type="text/css">
-
     <Header>
       <template v-slot:theme-toggle>
-        <div class="theme-toggle">
-          <button @click="toggleTheme" :title="isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'">
-            <span v-if="isDark">🌙</span>
-            <span v-else>☀️</span>
-          </button>
-        </div>
+        <button class="theme-btn" @click="toggleTheme" :title="isDark ? 'Switch to light mode' : 'Switch to dark mode'">
+          <i :class="isDark ? 'fa fa-sun-o' : 'fa fa-moon-o'" />
+        </button>
       </template>
     </Header>
-    <div class="main">
+
+    <main class="main">
       <transition name="fade" mode="out-in">
-        <router-view/>
+        <router-view />
       </transition>
-    </div>
+    </main>
+
     <Footer />
   </div>
 </template>
@@ -30,13 +26,9 @@ import Helpers from './helpers';
 
 export default Vue.extend({
   name: 'App',
-  components: {
-    Header, Footer
-  },
+  components: { Header, Footer },
   data() {
-    return {
-      isDark: true
-    }
+    return { isDark: true };
   },
   mounted() {
     this.applyTheme();
@@ -47,122 +39,171 @@ export default Vue.extend({
       this.applyTheme();
     },
     applyTheme() {
-      const theme = this.isDark ? 'theme-dark' : 'theme-light';
-      document.documentElement.classList.remove('theme-dark', 'theme-light');
-      document.documentElement.classList.add(theme);
-    }
-  }
+      document.documentElement.classList.toggle('theme-dark', this.isDark);
+      document.documentElement.classList.toggle('theme-light', !this.isDark);
+    },
+  },
 });
 
-// Preload heavy images or gifs that are used in other pages
 Helpers.preloadImages([
-  "img/projects/project-1-icon.png",
-  "img/projects/project-2-icon.png",
-  "img/projects/project-3-icon.png"
+  'img/projects/project-1-icon.png',
+  'img/projects/project-2-icon.png',
+  'img/projects/project-3-icon.png',
 ]);
-
 </script>
 
 <style lang="less">
-
-@import './css/projects.less';
 @import './css/variables.less';
 
+/* ── Reset & base ──────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
 html, body {
-  margin: 0px;
-  background-color: var(--body-bg);
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
 }
 
 #app {
-  background-color: var(--content-bg);
-  color: var(--text-color);
-  font-family: 'Karla', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-size: 1.1em;
-  line-height: 1.6em;
-  text-align: justify;
-}
-
-.theme-toggle {
-  margin-left: 1.5rem;
+  min-height: 100vh;
   display: flex;
-  align-items: center;
-  button {
-    background: var(--card-bg);
-    color: var(--accent-color);
-    border: 1px solid var(--border-color);
-    border-radius: 20px;
-    padding: 8px 18px;
-    font-size: 1em;
-    font-weight: 700;
-    cursor: pointer;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-    transition: background 0.2s, color 0.2s;
-  }
-  button:hover {
-    background: var(--accent-color);
-    color: var(--card-bg);
-  }
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, h5 {
-  text-align: left;
+/* ── Typography ───────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0;
+  color: var(--text);
 }
+
+h1 { font-size: 2.6rem; letter-spacing: -0.03em; }
+h2 { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); }
+h3 { font-size: 1rem; font-weight: 700; }
+h4 { font-size: 0.85rem; font-weight: 400; color: var(--text-muted); }
+h5 { font-size: 0.9rem; font-weight: 600; }
+
+p { margin: 0 0 1em; }
 
 a {
-  color: var(--accent-color);
-  text-decoration: none;
-  opacity: 0.7;
-  transition: opacity 0.2s;
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.15s;
 }
-a:hover, .router-link-exact-active {
-  opacity: 1;
-}
+a:hover { text-decoration-color: var(--text); }
 
-h1 {
-  font-size: 2.5em;
-  font-weight: 700;
-  margin-top: 0.5em;
-  margin-bottom: 40px;
-  margin-left: 0;
-  line-height: 1.1em;
-  letter-spacing: -1px;
-}
+ul { padding-left: 1.25em; }
+li { margin-bottom: 0.3em; }
 
+/* ── Layout ───────────────────────────────────────────── */
 .main {
-    padding: 12px;
-  }
-
-@media only screen and (min-width: 620px){
-  #app {
-    text-align: left;
-    line-height: 1.8em;
-  }
-  h1 {
-    margin-top: 0.67em;
-    margin-bottom: 80px;
-    line-height: 0.7em;
-  }
-  .main {
-    padding: 0px 40px 40px 180px;
-  }
-  .main, .header, .footer {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+  flex: 1;
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 56px 24px 80px;
 }
 
+/* ── Theme toggle button ──────────────────────────────── */
+.theme-btn {
+  background: none;
+  border: 1px solid var(--border);
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  transition: border-color 0.15s;
+
+  /* sun → yellow */
+  .fa-sun-o  { color: #f5c542; }
+  /* moon → silver-blue */
+  .fa-moon-o { color: #a8b8d0; }
+}
+.theme-btn:hover { border-color: var(--text); }
+
+/* ── Page transitions ─────────────────────────────────── */
 .fade-enter-active,
-.fade-leave-active {
-  transition-duration: 0.2s;
-  transition-property: opacity;
-  transition-timing-function: ease;
-}
+.fade-leave-active { transition: opacity 0.18s ease; }
+.fade-enter, .fade-leave-active { opacity: 0; }
 
-.fade-enter,
-.fade-leave-active {
-  opacity: 0
-}
+/* ── Dialog v-html content ────────────────────────────── */
+/* These must be global because v-html bypasses scoped CSS  */
+.dialog-content {
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
 
+  .phone-screenshot {
+    width: 140px;
+    margin: 8px;
+    border-radius: 4px;
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  .pc-screenshot {
+    width: 100%;
+    max-width: 480px;
+    margin: 8px 0;
+    border-radius: 4px;
+  }
+
+  .paragraph {
+    margin: 16px 0;
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  iframe.youtube {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border: none;
+    border-radius: 4px;
+    margin: 8px 0;
+  }
+
+  .notice {
+    border: 1px solid var(--border);
+    background: var(--surface);
+    padding: 10px 14px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+  }
+
+  a {
+    color: var(--text-muted);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    &:hover { color: var(--text); }
+  }
+
+  /* store badge images */
+  img[src*="play-store-logo"],
+  img[src*="app-store-logo"],
+  img[src*="ms-store-logo"] {
+    width: 120px;
+    display: inline-block;
+    margin: 6px 8px;
+  }
+}
 </style>

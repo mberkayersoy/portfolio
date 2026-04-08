@@ -1,52 +1,48 @@
 <template>
-  <div class="footer">
-    
-    <!-- <div class="left"><a href="https://github.com/schouffy/gamedev-portfolio" target="blank">Portfolio</a> by schouffy</div> -->
-    <div class="right">Reach me at <a href="mailto:mberkayersoy@gmail.com">mberkayersoy@gmail.com</a> or <router-link to="/contact">through here</router-link></div>
-  </div>
+  <footer class="footer">
+    <div class="footer-inner">
+      <span>mberkayersoy@gmail.com</span>
+      <div class="footer-links">
+        <a href="https://github.com/mberkayersoy" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/berkay-ersoy-291869228/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-
-export default Vue.extend({
-  name: "Footer"
-});
+import Vue from 'vue';
+export default Vue.extend({ name: 'Footer' });
 </script>
 
 <style scoped lang="less">
-
 @import '../css/variables.less';
 
 .footer {
-  background-color: @bodyBgColor;
-  width: 100%;
-  font-size: 0.8em;
-  opacity: 0.7;
-  padding-bottom: 30px;
+  border-top: 1px solid var(--border);
 }
 
-.left, .right {
-    padding-top: 10px;
-    text-align: center;
-  }
+.footer-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  gap: 16px;
+}
 
-@media only screen and (min-width: 620px){
+.footer-links {
+  display: flex;
+  gap: 16px;
 
-  .footer {
-    padding: 0;
-  }
-
-  .left, .right {
-    padding: 20px;
-  }
-
-  .left {
-    float: left;
-  }
-
-  .right {
-    float:right;
+  a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.15s;
+    &:hover { color: var(--text); }
   }
 }
 </style>

@@ -1,277 +1,358 @@
 <template>
-  <div class="resume-container">
-    <div class="resume-content">
-      <div class="paragraph">
-        <h2 class="section-title">Summary</h2>
-        <div class="section-content">
-          Throughout my academic journey in computer engineering, I actively engaged in various projects to improve my skills. My passion for game development led me to explore different technologies, even before gaining professional experience. Over time, I transitioned into the industry, where I had the opportunity to work on multiple game projects.
-          <br /><br />I worked as a Game Developer at Purple Owl Interactive, where I spearhead the development of Unity-based mobile games from start to launch. I have successfully led projects that have collectively accumulated over 160K downloads on Google Play and the App Store. Before this role, I worked at E-Moli Interactive, where I focused on augmented reality (AR) games and real-time multiplayer development. I also gained valuable experience through internships at Udo Games and Skyloft, where I contributed to game design, UI/UX, and gameplay mechanics.
-          <br /><br />Beyond my professional work, I enjoy playing video games, reading comic books, cooking, and skateboarding. I am always eager to learn new technologies and refine my skills in game development.
+  <div class="resume">
+
+    <!-- Summary + photo -->
+    <section class="summary-row">
+      <div class="summary-text">
+        <h2>Summary</h2>
+        <p>
+          Throughout my academic journey in Computer Engineering I actively
+          engaged in various projects. My passion for game development led me to
+          explore different technologies before gaining professional experience,
+          and over time I transitioned into the industry.
+        </p>
+        <p>
+          I worked as a Game Developer at Purple Owl Interactive, leading
+          Unity-based mobile games from concept to launch. Those games
+          collectively reached <strong>160K+ downloads</strong> on Google Play
+          and the App Store. Before that, I worked at E-Moli Interactive on AR
+          games and real-time multiplayer. I also gained experience through
+          internships at Udo Games and Skyloft.
+        </p>
+        <p>
+          Outside work I enjoy video games, comic books, cooking and
+          skateboarding. I'm always eager to learn new technologies.
+        </p>
+      </div>
+      <div class="summary-photo">
+        <img src="img/Resume_photo.png" alt="Berkay Ersoy" />
+      </div>
+    </section>
+
+    <!-- Work Experience -->
+    <section class="resume-section">
+      <h2>Work Experience</h2>
+
+      <div class="job">
+        <div class="job-header">
+          <div>
+            <h3>Purple Owl Interactive</h3>
+            <span class="job-title">Game Developer · Vancouver, Canada (Remote)</span>
+          </div>
+          <span class="job-date">Jul 2024 – Mar 2025</span>
         </div>
-      </div>
-      <div class="photo">
-        <img src="img/Resume_photo.png" />
-      </div>
-    </div>
-    <div class="full-content">
-      <h2 class="section-title">Work Experience</h2>
-      <div class="section-content">
+        <p class="job-intro">
+          Developed three Unity-based mobile games published on Google Play and
+          the App Store, collectively reaching 160K+ downloads.
+        </p>
 
-<h3>Purple Owl Interactive - Game Developer</h3>
-      <h4>Vancouver, Canada (Remote) <span style="float: right;">Jul 2024 - Mar 2025</span></h4>
-      As a Game Developer at Purple Owl Interactive, I was responsible for developing three Unity-based mobile games,
-      all of which have been successfully published on Google Play and Apple App Store. 
-      These games have collectively reached over 160K+ downloads, showcasing their popularity among players.
-      <div>
-        <h5>🃏 Solitaire</h5>
-        <ul>
-          <li>Developed a classic Klondike Solitaire game with smooth animations and an intelligent hint system.</li>
-          <li>Each new game is made to be absolutely solvable.</li>
-          <li>Undo and Hint system added.</li>
-          <li>Hint system shows the most suitable move to the user according to the current situation.</li>
-          <li>Achieved 50K+ downloads on Google Play.</li>
-          <li><a href="https://play.google.com/store/apps/details?id=com.purpleowl.solitaire&hl=tr" target="_blank">Google Play</a> | <a href="https://apps.apple.com/tr/app/solitaire-classic-card-game/id6740050961?l=tr" target="_blank">App Store</a></li>
-        </ul>
-      </div>
-      
-      <div>
-        <h5>🃏 Gin Rummy</h5>
-        <ul>
-          <li>Designed a competitive card game with AI and multiplayer modes.</li>
-          <li>Implemented an intuitive UI and smooth gameplay mechanics.</li>
-          <li>Achieved 100K+ downloads on Google Play.</li>
-          <li><a href="https://play.google.com/store/apps/details?id=com.purpleowl.gin.rummy.card&hl=tr" target="_blank">Google Play</a> | <a href="https://apps.apple.com/tr/app/gin-rummy-card-game/id6740112194?l=tr" target="_blank">App Store</a></li>
-        </ul>
-      </div>
-      
-      <div>
-        <h5>🎲 Yatzy</h5>
-        <ul>
-          <li>Developed a feature-rich dice game with multiple game modes and strategic gameplay.</li>
-          <li>Designed a sleek UI and implemented fair AI mechanics.</li>
-          <li>Achieved 10K+ downloads on Google Play.</li>
-          <li><a href="https://play.google.com/store/apps/details?id=com.purpleowl.yatzy.dice.game&hl=tr" target="_blank">Google Play</a> | <a href="https://apps.apple.com/tr/app/yatzyclassic/id6740508341?l=tr" target="_blank">App Store</a></li>
-        </ul>
-      </div>
-
-      
-      <h3>E-Moli Interactive - Game Developer</h3>
-      <h4>Eskişehir, Turkey (Remote) <span style="float: right;">Feb 2024 - May 2024</span></h4>
-      <div>
-        During my tenure at E-Moli Interactive, I played a key role in the development of four Unity-based projects, all built from the ground up. Three of these were single-player experiences, while the fourth was a multiplayer game featuring LAN connectivity, implemented using Mirror Networking. These projects allowed me to refine my skills in game architecture, networking, and player experience optimization.
-        <router-link to="/game-projects?open=wall-Games">Click to see the developed projects.</router-link>
-      </div>
-
-      <h3>Udo Games - Game Developer Intern</h3>
-      <h4>Ankara, Turkey (Remote) <span style="float: right;">Jul 2023 - Aug 2023</span></h4>
-      <div>Engaged in a comprehensive internship program, receiving hands-on training from game developers, game artists, marketing specialists and human resources experts to gain insight into the gaming industry.
-Participated in a game jam at the end of the internship, developing a unique game project in a limited time frame.</div>
-
-        <div class="box">
-          The source code of the game prototype I developed during my internship is available on <a href="https://github.com/mberkayersoy/MowIt" target="_blank">GitHub</a>.
+        <div class="project-entry">
+          <h5>Solitaire</h5>
+          <ul>
+            <li>Classic Klondike Solitaire with smooth animations and an intelligent hint system.</li>
+            <li>Every deal is guaranteed solvable via a custom shuffling algorithm.</li>
+            <li>Achieved 50K+ downloads on Google Play.</li>
+            <li>
+              <a href="https://play.google.com/store/apps/details?id=com.purpleowl.solitaire&hl=tr" target="_blank" rel="noopener">Google Play</a>
+              ·
+              <a href="https://apps.apple.com/tr/app/solitaire-classic-card-game/id6740050961?l=tr" target="_blank" rel="noopener">App Store</a>
+            </li>
+          </ul>
         </div>
 
-      <h3>Skyloft - Game Developer Intern</h3>
-      <h4>Izmir, Turkey (In Office) <span style="float: right;">Aug 2022 - Sep 2022</span></h4>
-      <div>Focused on gameplay mechanics, UI design, and optimizing game performance.
-Created a 3D Calculator, an educational game leveraging interactive visualization for mathematical concepts, utilizing infix and postfix algorithms for expression evaluation.</div>
+        <div class="project-entry">
+          <h5>Gin Rummy</h5>
+          <ul>
+            <li>Competitive card game with AI opponents and multiplayer modes.</li>
+            <li>Intuitive UI and polished gameplay mechanics.</li>
+            <li>Achieved 100K+ downloads on Google Play.</li>
+            <li>
+              <a href="https://play.google.com/store/apps/details?id=com.purpleowl.gin.rummy.card&hl=tr" target="_blank" rel="noopener">Google Play</a>
+              ·
+              <a href="https://apps.apple.com/tr/app/gin-rummy-card-game/id6740112194?l=tr" target="_blank" rel="noopener">App Store</a>
+            </li>
+          </ul>
+        </div>
 
+        <div class="project-entry">
+          <h5>Yatzy</h5>
+          <ul>
+            <li>Feature-rich dice game with multiple game modes and fair AI mechanics.</li>
+            <li>Achieved 10K+ downloads on Google Play.</li>
+            <li>
+              <a href="https://play.google.com/store/apps/details?id=com.purpleowl.yatzy.dice.game&hl=tr" target="_blank" rel="noopener">Google Play</a>
+              ·
+              <a href="https://apps.apple.com/tr/app/yatzyclassic/id6740508341?l=tr" target="_blank" rel="noopener">App Store</a>
+            </li>
+          </ul>
+        </div>
       </div>
-      <h2 class="section-title">Skills</h2>
+
+      <div class="job">
+        <div class="job-header">
+          <div>
+            <h3>E-Moli Interactive</h3>
+            <span class="job-title">Game Developer · Eskişehir, Turkey (Remote)</span>
+          </div>
+          <span class="job-date">Feb 2024 – May 2024</span>
+        </div>
+        <p>
+          Developed four Unity projects from the ground up — three single-player
+          experiences and one LAN multiplayer game using Mirror Networking.
+          <router-link to="/game-projects?open=wall-Games">View projects →</router-link>
+        </p>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <div>
+            <h3>Udo Games</h3>
+            <span class="job-title">Game Developer Intern · Ankara, Turkey (Remote)</span>
+          </div>
+          <span class="job-date">Jul 2023 – Aug 2023</span>
+        </div>
+        <p>
+          Hands-on training across game development, art, marketing and HR.
+          Participated in an end-of-internship game jam.
+          Source code available on
+          <a href="https://github.com/mberkayersoy/MowIt" target="_blank" rel="noopener">GitHub</a>.
+        </p>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <div>
+            <h3>Skyloft</h3>
+            <span class="job-title">Game Developer Intern · Izmir, Turkey (On-site)</span>
+          </div>
+          <span class="job-date">Aug 2022 – Sep 2022</span>
+        </div>
+        <p>
+          Focused on gameplay mechanics, UI design, and game performance
+          optimisation. Built a 3D Calculator educational game using infix/postfix
+          expression algorithms.
+        </p>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="resume-section">
+      <h2>Skills</h2>
       <div class="skills-grid">
-        <div class="skill-set">
-          <h3>Languages</h3>
-          <SkillRate name="C#" />
-          <SkillRate name="C++" />
-          <SkillRate name="Python" />
-          <SkillRate name="JAVA" />
-          <SkillRate name="SQL" />
+        <div class="skill-group">
+          <h4>Languages</h4>
+          <div class="tags">
+            <SkillRate name="C#" />
+            <SkillRate name="C++" />
+            <SkillRate name="Python" />
+            <SkillRate name="Java" />
+            <SkillRate name="SQL" />
+          </div>
         </div>
-        <div class="skill-set">
-          <h3>Tools & Frameworks</h3>
-          <SkillRate name="Unity" />
-          <SkillRate name="Zenject" />
-          <SkillRate name="UniTask" />
-          <SkillRate name="Firebase" />
-          <SkillRate name="Photon Engine" />
-          <SkillRate name="Mirror Networking" />
-          <SkillRate name="GIT" />
+        <div class="skill-group">
+          <h4>Tools & Frameworks</h4>
+          <div class="tags">
+            <SkillRate name="Unity" />
+            <SkillRate name="Zenject" />
+            <SkillRate name="UniTask" />
+            <SkillRate name="Firebase" />
+            <SkillRate name="Photon Engine" />
+            <SkillRate name="Mirror Networking" />
+            <SkillRate name="Git" />
+          </div>
         </div>
-        <div class="skill-set">
-          <h3>Soft skills</h3>
-          <SkillRate name="Teamwork" />
-          <SkillRate name="Self-Awareness" />
-          <SkillRate name="Continuous Learning" />
-          <SkillRate name="Time Managment" />
-          <SkillRate name="Creativity" />
+        <div class="skill-group">
+          <h4>Technical</h4>
+          <div class="tags">
+            <SkillRate name="Design Patterns" />
+            <SkillRate name="Game Architecture" />
+            <SkillRate name="Game Physics" />
+          </div>
         </div>
-        <div class="skill-set">
-          <h3>Technical skills</h3>
-          <SkillRate name="Design Patterns" />
-          <SkillRate name="Game Architecture" />
-          <SkillRate name="Game Physics" />
+        <div class="skill-group">
+          <h4>Soft Skills</h4>
+          <div class="tags">
+            <SkillRate name="Teamwork" />
+            <SkillRate name="Continuous Learning" />
+            <SkillRate name="Time Management" />
+            <SkillRate name="Creativity" />
+          </div>
         </div>
       </div>
-      <div style="clear:both" />
+    </section>
 
+    <!-- Education -->
+    <section class="resume-section">
       <h2>Education</h2>
-
-      <h3>Mugla Sitki Kocman University</h3>
-      <h4>B.S. in Computer Engineering (Sep 2018 - Jun 2023)</h4>
-
-      <h2>Languages</h2>
-      <h4>English - B2</h4>
-      <h4>Turkish - Native</h4>
-
-
-      <h2>Besides...</h2>
-      <div>
-        <h3>I ❤️ Music</h3>
-        <div>I am proficient in playing both drums and guitar, often indulging in street performances whenever the opportunity arises. 
-          Additionally, I have prior stage experience with a band. Now, I am eager to assemble a new band and take to the stage once more."</div>
-        <h3>I 🧡 Sports</h3>
-        <div>What could be better than taking your skateboard and going for a ride when the weather is nice?</div>
-        <div>I am also interested in Latin dances and basketball.</div>
-      
-
+      <div class="job">
+        <div class="job-header">
+          <div>
+            <h3>Mugla Sitki Kocman University</h3>
+            <span class="job-title">B.S. in Computer Engineering</span>
+          </div>
+          <span class="job-date">Sep 2018 – Jun 2023</span>
+        </div>
       </div>
-    </div>
+    </section>
+
+    <!-- Languages -->
+    <section class="resume-section">
+      <h2>Languages</h2>
+      <div class="lang-row">
+        <span>English <span class="lang-level">B2</span></span>
+        <span>Turkish <span class="lang-level">Native</span></span>
+      </div>
+    </section>
+
+    <!-- Interests -->
+    <section class="resume-section">
+      <h2>Interests</h2>
+      <p>
+        I play drums and guitar — I've performed live on stage with a band and
+        enjoy street sessions. I'm also into skateboarding, Latin dances and
+        basketball.
+      </p>
+    </section>
+
   </div>
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import SkillRate from "@/components/SkillRate.vue";
+import Vue from 'vue';
+import SkillRate from '@/components/SkillRate.vue';
 
 export default Vue.extend({
-  name: "Resume",
-  components: {
-    SkillRate,
-  },
+  name: 'Resume',
+  components: { SkillRate },
 });
 </script>
 
 <style scoped>
-.resume-container {
-  width: 100%;
-  padding-top: 32px;
+/* ── Section wrapper ─────────────────────────────── */
+.resume-section {
+  padding: 48px 0 0;
+  border-top: 1px solid var(--border);
+  margin-top: 48px;
+
+  > h2 {
+    font-size: 0.95rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 32px;
+  }
 }
 
-.resume-title {
-  text-align: center;
-  font-size: 2.8em;
-  font-weight: 900;
-  color: var(--accent-color);
-  margin-bottom: 18px;
-  letter-spacing: -1px;
-}
-
-.resume-content {
+/* ── Summary row ─────────────────────────────────── */
+.summary-row {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 32px;
-  margin-bottom: 40px;
+  padding-bottom: 0;
+
+  p { color: var(--text); line-height: 1.75; }
+  h2 { font-size: 0.95rem; letter-spacing: 0.1em; }
+  h2 { margin-bottom: 20px; }
 }
 
-.photo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 24px;
-}
-.photo img {
+.summary-photo img {
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
-  width: 320px;
-  height: 320px;
   object-fit: cover;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-  border: 4px solid var(--accent-color);
+  border: 1px solid var(--border);
 }
 
-.paragraph {
-  max-width: 700px;
-  font-size: 1.1em;
-}
-
-.section-title {
-  font-size: 2em;
-  font-weight: 800;
-  color: var(--accent-color);
-  margin: 32px 0 12px 0;
-  border-left: 6px solid var(--accent-color);
-  padding-left: 16px;
-  background: linear-gradient(90deg, var(--accent-color) 0 6px, transparent 6px 100%);
-}
-
-.section-content {
-  background: var(--content-bg);
-  border-radius: 14px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-  padding: 24px 32px;
-  margin-bottom: 24px;
-  font-size: 1.08em;
-  color: var(--text-color);
-}
-
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  margin: 32px 0 48px 0;
-  justify-items: stretch;
-  align-items: stretch;
-}
-.skill-set {
-  background: var(--content-bg);
-  border-radius: 16px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-  padding: 20px 14px;
-  min-width: 0;
-  max-width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
-}
-.skill-set h3 {
-  margin-bottom: 12px;
-  color: var(--accent-color);
-  font-size: 1.15em;
-  font-weight: 700;
-}
-
-@media (min-width: 900px) {
-  .resume-content {
+@media (min-width: 640px) {
+  .summary-row {
     flex-direction: row;
     align-items: flex-start;
-    gap: 64px;
+    gap: 48px;
   }
-  .paragraph {
-    flex: 2;
-    order: 1;
-  }
-  .photo {
-    flex: 1;
-    justify-content: flex-end;
-    align-items: flex-start;
-    order: 2;
-  }
-  .photo img {
-    width: 420px;
-    height: 420px;
-  }
-  .resume-container {
-    padding-top: 64px;
-  }
-  .photo {
-    margin-top: 48px;
-  }
+  .summary-row > .summary-text { flex: 1; }
+  .summary-photo { flex-shrink: 0; padding-top: 42px; }
 }
-@media (max-width: 900px) {
-  .skills-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
+
+/* ── Job entries ─────────────────────────────────── */
+.job {
+  margin-bottom: 40px;
+
+  &:last-child { margin-bottom: 0; }
+}
+
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+
+  h3 { margin-bottom: 2px; }
+}
+
+.job-title {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.job-date {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding-top: 3px;
+}
+
+.job-intro { margin-bottom: 16px; color: var(--text); }
+
+.project-entry {
+  margin: 16px 0;
+  padding-left: 16px;
+  border-left: 2px solid var(--border);
+
+  h5 { margin-bottom: 6px; color: var(--text); }
+  ul { margin: 0; color: var(--text); }
+  li { font-size: 0.9rem; line-height: 1.6; }
+}
+
+/* ── Skills ──────────────────────────────────────── */
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px 48px;
+}
+
+.skill-group h4 {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* ── Languages ───────────────────────────────────── */
+.lang-row {
+  display: flex;
+  gap: 32px;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.lang-level {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-left: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+@media (max-width: 480px) {
+  .skills-grid { grid-template-columns: 1fr; gap: 24px; }
 }
 </style>

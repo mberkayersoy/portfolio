@@ -1,14 +1,14 @@
 <template>
-  <transition name="fade">
-    <div v-if="visible">
-      <div class="overlay" @click="$emit('close')"></div>
-      <div class="dialog" :style="{ 'background-color': 'var(--card-bg)', 'color': 'var(--text-color)' }">
-        <button @click="$emit('close')" class="dialog-close" aria-label="Close">
-          <span>✕</span>
-        </button>
-        <h1 class="dialog-title">{{ title }}</h1>
-        <div class="dialog-content">
-          <div v-html="htmlContent"></div>
+  <transition name="overlay-fade">
+    <div v-if="visible" class="overlay-root">
+      <div class="backdrop" @click="$emit('close')" />
+      <div class="dialog">
+        <div class="dialog-header">
+          <h2 class="dialog-title">{{ title }}</h2>
+          <button class="close-btn" @click="$emit('close')" aria-label="Close">✕</button>
+        </div>
+        <div class="dialog-body">
+          <div class="dialog-content" v-html="htmlContent" />
         </div>
       </div>
     </div>
@@ -16,113 +16,123 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import Vue from 'vue';
 
 export default Vue.extend({
-  name: "ProjectDetailsOverlay",
+  name: 'ProjectDetailsOverlay',
   props: {
     visible: Boolean,
     color: String,
     title: String,
     htmlContent: String,
   },
-  methods: {
-    getImage: function(url: string) {
-      console.log("fetching image " + url);
-    }
-  }
 });
 </script>
 
 <style scoped>
-.overlay {
-  background-color: rgba(0,0,0,0.45);
-  z-index: 10;
+/* ── Overlay backdrop ─────────────────────────── */
+.backdrop {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  transition: background 0.3s;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 100;
+}
+
+/* ── Dialog ───────────────────────────────────── */
+.overlay-root {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 16px 40px;
+  overflow-y: auto;
 }
 
 .dialog {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  margin: 40px auto;
-  z-index: 11;
-  max-width: 1000px;
-  min-width: 320px;
-  width: 95vw;
-  background: var(--card-bg);
-  color: var(--text-color);
-  border-radius: 16px;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.18);
-  padding: 24px 16px 16px 16px;
-  max-height: 90vh;
-  overflow-y: auto;
-  animation: popup-in 0.22s cubic-bezier(.4,2,.6,1) both;
+  position: relative;
+  z-index: 101;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 760px;
+  animation: slide-in 0.2s ease both;
 }
 
-@keyframes popup-in {
-  0% { opacity: 0; transform: translateY(-24px) scale(0.98); }
-  100% { opacity: 1; transform: translateY(0) scale(1); }
+@keyframes slide-in {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Header ───────────────────────────────────── */
+.dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border);
 }
 
 .dialog-title {
-  text-align: center;
-  font-size: 1.3em;
-  font-weight: 800;
-  margin: 0 0 18px 0;
-  color: var(--accent-color);
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.02em;
+  margin: 0;
+  /* override global h2 uppercase */
+  text-transform: none;
 }
 
-.dialog-content {
-  font-size: 1.08em;
-  line-height: 1.7em;
-  color: var(--text-color);
-  padding-bottom: 8px;
-}
-
-.dialog-close {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  background: var(--accent-color);
-  color: var(--card-bg);
-  border: none;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  font-size: 1.1em;
-  font-weight: 900;
+.close-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  font-size: 0.75rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  transition: background 0.2s, color 0.2s;
-}
-.dialog-close:hover {
-  background: var(--text-color);
-  color: var(--accent-color);
+  flex-shrink: 0;
+  transition: color 0.15s, border-color 0.15s;
+
+  &:hover {
+    color: var(--text);
+    border-color: var(--text);
+  }
 }
 
-@media (max-width: 700px) {
+/* ── Body ─────────────────────────────────────── */
+.dialog-body {
+  padding: 24px;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--text);
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+/* ── Transition ───────────────────────────────── */
+.overlay-fade-enter-active,
+.overlay-fade-leave-active { transition: opacity 0.18s ease; }
+.overlay-fade-enter,
+.overlay-fade-leave-to { opacity: 0; }
+
+/* ── Mobile ───────────────────────────────────── */
+@media (max-width: 560px) {
+  .overlay-root { padding: 0; align-items: flex-end; }
   .dialog {
-    min-width: 0;
-    width: 98vw;
-    max-width: 98vw;
-    max-height: 98vh;
-    padding: 12px 2px 12px 2px;
-    border-radius: 0.7em;
-    margin: 12px auto;
+    border-radius: 12px 12px 0 0;
+    max-height: 92vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
   }
-  .dialog-title {
-    font-size: 1.08em;
-    margin-bottom: 10px;
-  }
+  .dialog-body { flex: 1; max-height: none; }
 }
 </style>
